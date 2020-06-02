@@ -1,0 +1,72 @@
+<html ng-app="ShoppingListCheckOff">
+    <head>
+        <title>My first application</title>
+        <link rel="stylesheet" href="styles/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+            .error {
+              font-weight: bold;
+              color: red;
+              font-size: 1.2em;
+            }
+            li {
+              margin-bottom: 7px;
+              font-size: 1.2em;
+            }
+            li > button {
+              margin-left: 6px;
+            }
+          
+          </style>
+    </head>
+    <body ng-app="ShoppingListCheckOff">
+
+        <h3 style="text-align: center; margin-top: 80px;">Shopping List Check Off </h3>
+
+        <!--To Buy Shopping List -->
+        <div class="container">
+            <br />
+            <br/>
+            <div class="col-md-6"  ng-controller="ToBuyController as ctr1">
+                <h5>To buy:</h5>
+
+                <ol type="1">
+                    <li ng-repeat="item in ctr1.itemlist">Buy {{item.quantity}} {{item.name}} 
+                        <button ng-click="ctr1.Add($index);" class="btn btn-light btn-sm"><span style="color: green;">&#10003;</span>  BUY</button>
+                    </li>
+                </ol>
+
+                <div ng-show="ctr1.itemlist.length==0"  class="error">Everything has been bought off the list</div>
+                <br/>
+                <br/>
+
+            </div>  
+
+
+               <!--The Bought Shopping List -->
+              <div class="col-md-6" ng-controller="AlreadyBoughtController as ctr2">
+                <h5>Bought:</h5>
+
+                <ol type="1">
+                  <li ng-repeat="item in ctr2.itemlist">Bought {{item.quantity}} of {{item.name}} 
+                   
+                  </li>
+              </ol>
+
+                <div ng-if="ctr2.itemlist.length==0"  class="error">nothing has been bought</div>
+              </div> 
+        </div>
+
+
+    
+        
+
+        
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="angular.min.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
